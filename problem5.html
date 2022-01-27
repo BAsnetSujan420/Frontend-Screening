@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem 5</title>
+    <style>
+      main {
+        width: 80%;
+        max-width: 850px;
+        margin: 0 auto;
+      }
+      .rectangle {
+        width: 800px;
+        height: 600px;
+        border: 1px solid red;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.4em 1em;
+        background: rgb(30, 65, 94);
+        color: #fff;
+        text-transform: uppercase;
+        outline: none;
+        border: 0;
+        border-radius: 5px;
+        margin-top: 1rem;
+        opacity: 0.9;
+        transition: opacity 200ms ease;
+      }
+
+      .btn:hover {
+        opacity: 1;
+      }
+
+      .green-box {
+        background: green;
+        width: 60px;
+        aspect-ratio: 1;
+        margin-inline: auto;
+        animation: circular-move 5s infinite ease-out forwards;
+        animation-play-state: paused;
+      }
+
+      .play {
+        animation-play-state: running;
+      }
+
+      @keyframes circular-move {
+        0% {
+          transform: translatex(0px) translatey(0px);
+        }
+        25% {
+          transform: translatex(-370px) translatey(250px);
+        }
+
+        50% {
+          transform: translatex(0px) translatey(540px);
+        }
+
+        75% {
+          transform: translatex(370px) translatey(250px);
+        }
+        100% {
+          transform: translatex(0px) translatey(0px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="rectangle">
+        <div class="green-box"></div>
+      </div>
+      <div class="btn-container">
+        <button class="btn">Play</button>
+      </div>
+    </main>
+    <script>
+      const greenBox = document.querySelector(".green-box");
+      const btn = document.querySelector(".btn");
+      btn.addEventListener("click", () => {
+        greenBox.classList.toggle("play");
+        const btnText = greenBox.classList.contains("play") ? "Pause" : "Play";
+        btn.textContent = btnText;
+      });
+    </script>
+  </body>
+</html>
